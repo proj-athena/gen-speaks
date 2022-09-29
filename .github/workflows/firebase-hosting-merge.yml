@@ -17,4 +17,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GENSPEAKS2022 }}'
           channelId: live
-          projectId: genspeaks2022
+          projectId: genspeaks-podcasts
