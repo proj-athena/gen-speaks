@@ -44,7 +44,7 @@ export default function Login() {
   
   return (
     <>
-      <Card>
+      <Card className="m-5" style={{minWidth: "400px"}}>
         <Card.Body>
           <img
             className="img-fluid rounded-pill center-block d-block mx-auto"

@@ -1,4 +1,6 @@
 import React from "react";
+import '../App.css';
+
 import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -9,30 +11,34 @@ import Unauthorized from './Unauthorized';
 
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import Layout from "./Layout";
+import Dashboard from "./Dashboard";
 import Admin from "./Admin";
-import HomePage from "../pages/HomePage";
+
+
 function App() {
   return (
     <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
+      className="d-flex"
+      style={{ minHeight: "100vh", minWidth: "100vw", alignItems: "flex-start", justifyContent: "space-between" }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      <div className="w-100" style={{display: "flex", flexDirection: "column",  alignItems: "center"}}>
         <BrowserRouter>
           <AuthProvider>
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <PrivateRoute>
-                    <HomePage />
-                  </PrivateRoute>
-                }
-              ></Route>
+              <Route element={<Layout><Outlet /></Layout>}>
+                <Route
+                  path="/dashboard"
+                  element={
+                    <PrivateRoute>
+                      <Dashboard />
+                    </PrivateRoute>
+                  }
+                ></Route>
               <Route
                 path="/update-profile"
                 element={
@@ -50,6 +56,7 @@ function App() {
                 }
               ></Route>
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              </Route>
               <Route path="/*" element={<Unauthorized />} />
             </Routes>
           </AuthProvider>

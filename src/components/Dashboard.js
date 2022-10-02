@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import React from "react";
+import { Card } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const [error, setError] = useState("");
-  const { currentUser, logout, roles } = useAuth();
-  const navigate = useNavigate();
-  async function handleLogout() {
-    setError("");
-    try {
-      await logout();
-      navigate("/login");
-    } catch(err) {
-      console.log(err)
-      setError("Failed to log out");
-    }
-  }
+  const { currentUser } = useAuth();
+  // async function handleLogout() {
+  //   setError("");
+  //   try {
+  //     await logout();
+  //     navigate("/login");
+  //   } catch(err) {
+  //     console.log(err)
+  //     setError("Failed to log out");
+  //   }
+  // }
 
   return (
     <>
-      <Card>
+      <Card style={{width: "400px"}}>
         <Card.Body>
           <img
             className="img-fluid rounded-pill center-block d-block mx-auto"
@@ -28,19 +26,19 @@ const Dashboard = () => {
             alt="logo"
           />
           <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {/*error && <Alert variant="danger">{error}</Alert>*/}
           <strong>Email:</strong> {currentUser.email}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      {/* <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
       </div>
-      { roles.includes(5001) && <Link to="/admin">Click here for admin</Link>}
+      { roles.includes(5001) && <Link to="/admin">Click here for admin</Link> } */}
     </>
   );
 }

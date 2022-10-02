@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default function Admin() {
     return (
@@ -10,7 +9,7 @@ export default function Admin() {
                     <h1 className='card-title'>This is Admin page</h1>
                 </div>
             </Card>
-            <Link to="/dashboard">Click here to dashboard</Link>
+            {/* <Link to="/dashboard">Click here to dashboard</Link> */}
         </div>
     );
 }

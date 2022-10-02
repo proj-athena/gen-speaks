@@ -43,7 +43,7 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <Card>
+      <Card style={{minWidth: "400px"}}>
         <Card.Body>
         <img
             className="img-fluid rounded-pill center-block d-block mx-auto"
